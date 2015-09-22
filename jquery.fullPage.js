@@ -1,4 +1,4 @@
-/*!
+    /*!
  * fullPage 2.7.1
  * https://github.com/alvarotrigo/fullPage.js
  * @license MIT licensed
@@ -783,6 +783,8 @@
 
             solveBugSlimScroll(section);
             lazyLoad(section);
+            lazyLoad(section.next(SECTION_SEL));
+            lazyLoad(section.next(SECTION_SEL).next(SECTION_SEL));
             playMedia(section);
 
             $.isFunction( options.afterLoad ) && options.afterLoad.call(section, section.data('anchor'), (section.index(SECTION_SEL) + 1));
@@ -858,7 +860,7 @@
                         $.isFunction( options.onLeave ) && options.onLeave.call( leavingSection, leavingSectionIndex, sectionIndex, yMovement);
 
                         $.isFunction( options.afterLoad ) && options.afterLoad.call( currentSection, anchorLink, sectionIndex);
-                        lazyLoad(currentSection);
+                        //lazyLoad(currentSection);
 
                         FP.setFitToSection(!currentSection.hasClass(AUTO_HEIGHT));
 
@@ -1260,6 +1262,8 @@
 
                 element.addClass(ACTIVE).siblings().removeClass(ACTIVE);
                 lazyLoad(element);
+				lazyLoad(v.element.next(SECTION_SEL));
+				lazyLoad(v.element.next(SECTION_SEL).next(SECTION_SEL));
 
                 //preventing from activating the MouseWheelHandler event
                 //more than once if the page is scrolling
